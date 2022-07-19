@@ -1,4 +1,0 @@
-TesteParalelo/RunCucumberTest.java
- TesteParalelo.RunCucumberTest
-TesteParalelo/StepDefinitions.java
- TesteParalelo.StepDefinitions

@@ -49,13 +49,15 @@ tasks.test {
     systemProperty("cucumber.junit-platform.naming-strategy", "long")   
 }
 
+def theadCucumber = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+
 task cucumber() {
     dependsOn assemble, testClasses
     doLast {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--glue', 'TesteParalelo', 'src/test/resources']
+            args = ['--plugin', 'pretty', '--glue', 'TesteParalelo', 'src/test/resources', '--threads', theadCucumber.toString()]
         }
     }
 }
